@@ -1,0 +1,186 @@
+quartet v0.60 Lean 4 + mathlib 形式化证明包使用说明
+===================================================
+
+一、压缩包内容
+--------------
+
+核心内容是一个自包含文件夹：
+
+1. quartet_v060_formalization
+   v0.60 论文证明的 Lean 4 形式化项目。
+
+原先位于同级文件夹 quartet_lean_reference 中、且确实被本项目使用
+的 10 个 Lean 模块，已经内置到：
+
+quartet_v060_formalization/QuartetDistance
+
+因此不再需要把 quartet_lean_reference 放在同级目录，也可以单独
+移动、复制或发布 quartet_v060_formalization。
+
+内置模块的来源、最小依赖闭包及 MIT 许可证见：
+
+quartet_v060_formalization/VENDORED_MODULES.md
+quartet_v060_formalization/THIRD_PARTY_NOTICES.md
+quartet_v060_formalization/third_party/quartet_distance_bandelt_dress/LICENSE
+
+
+二、已经形式化的主要内容
+----------------------
+
+1. Appendix A 的 principal chart、four-sector、residual partition、
+   bridge reversal 和 occurrence settlement。
+
+2. A.15a、A.15b、A.17、A.18 及其有限和与平方恒等式。
+
+3. source occurrence 与 reversed target occurrence 的双射及系数保持。
+
+4. first-face、second-face、completed package、blockwise settlement
+   和 bridge-orbit 边界抵消。
+
+5. A.30 的四类非负平方分解：
+
+   f_1 = (1/4) S_1 + (1/2) S_2 + (1/2) S_3 + S_4。
+
+6. Psi 的非负性以及 f_1 >= 0。
+
+7. ordered-quadruple kernel、重复指标 remainder 和精确有限计数恒等式。
+
+8. quartet distance 的归一化上界。
+
+9. 最大 quartet distance 除以 C(n,4) 趋于 2/3。
+
+10. Appendix B 的 distance-covariance 恒等式及其非负性。
+
+
+三、软件版本
+------------
+
+Lean：4.32.0
+mathlib：v4.32.0
+
+建议安装：
+
+1. elan（Lean 版本管理工具）
+2. VS Code
+3. VS Code 官方 Lean 4 扩展
+
+
+四、完整编译方法
+----------------
+
+解压压缩包后，在终端进入形式化项目：
+
+cd "解压目录/quartet_v060_formalization"
+
+然后运行：
+
+lake build
+
+完整通过时，最后应出现类似：
+
+Build completed successfully (8717 jobs).
+
+编译过程中出现的黄色 linter warning 是代码风格提示，不代表证明
+失败。出现 error 才表示编译或证明没有通过。
+
+
+五、最终公理审计
+----------------
+
+在 quartet_v060_formalization 目录中运行：
+
+lake env lean QuartetV060/AxiomAudit.lean
+
+当前经过检查的最终定理只依赖 Lean 的标准逻辑公理：
+
+propext
+Classical.choice
+Quot.sound
+
+输出中不应出现：
+
+sorryAx
+自定义数学 axiom
+native_decide 产生的额外信任入口
+
+
+六、建议的阅读顺序
+------------------
+
+1. README.md
+   项目总体说明、版本、最终定理和审计结果。
+
+2. LEAN4_使用说明.md
+   更详细的中文阅读和操作指南。
+
+3. FORMALIZATION_MAP.md
+   论文中的命题、公式与 Lean 模块、定理名的逐项对应表。
+
+4. QuartetV060/ConcreteFourFamilies.lean
+   A.30 和 f_1 >= 0 的核心出口。
+
+5. QuartetV060/MainTheorem.lean
+   从 f_1 >= 0 到有限 quartet-distance 上界。
+
+6. QuartetV060/Sharpness.lean
+   最大 quartet distance 的 sharp 2/3 渐近结论。
+
+7. QuartetV060/DistanceCovariance.lean
+   Appendix B 的形式化。
+
+
+七、在 VS Code 中逐步查看证明
+----------------------------
+
+1. 用 VS Code 打开 quartet_v060_formalization 文件夹。
+
+2. 打开一个 .lean 文件。
+
+3. 把光标放在定理名或证明步骤后面。
+
+4. Lean Infoview 会显示当前假设和待证目标。
+
+5. 可以逐步查看每次有限和换序、指标集合分拆、系数变换和代数化简
+   是否被 Lean 接受。
+
+
+八、最核心的 Lean 定理名
+-----------------------
+
+QuartetV060.ConcreteFourFamilies.auxiliaryFunctional_real_eq_scaledLedger
+
+QuartetV060.ConcreteFourFamilies.auxiliaryFunctional_nonnegative
+
+QuartetV060.DistinctTupleCounting.auxiliaryFunctional_counting_identity
+
+QuartetV060.MainTheorem.normalized_bounds
+
+QuartetV060.Sharpness.normalizedMaximum_tendsto_two_thirds
+
+QuartetV060.DistanceCovariance.splitSystemDistanceCovariance_eq_detSquare
+
+QuartetV060.DistanceCovariance.splitSystemDistanceCovariance_nonnegative
+
+
+九、准确的证明范围
+------------------
+
+主定理已经在 binary leaf-labelled phylogenetic tree 的范围内形式化，
+这正是论文 Bandelt--Dress quartet-distance 主结果的适用范围。
+
+Appendix C 的两个具体 25 叶 Newick 树和数值 9273/390625 是计算说明，
+不是主定理的逻辑前提。三种计算路线所使用的一般数学恒等式已经在
+Lean 中证明；如果要审查论文中这组具体数字，仍应运行相应的精确
+有理数验证程序。
+
+
+十、重新获得完全相同的结果
+--------------------------
+
+请同时保留：
+
+quartet_v060_formalization/lake-manifest.json
+quartet_v060_formalization/lean-toolchain
+
+这两个文件固定了 Lean 和 mathlib 版本。内置的 QuartetDistance
+模块不再通过外部路径解析。不要在正式复核前随意执行依赖升级。

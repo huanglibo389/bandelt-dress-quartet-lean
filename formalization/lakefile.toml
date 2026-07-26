@@ -1,0 +1,14 @@
+name = "quartet_v060_formalization"
+version = "0.1.0"
+defaultTargets = ["QuartetV060"]
+
+[[lean_lib]]
+name = "QuartetV060"
+
+[[lean_lib]]
+name = "QuartetDistance"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.0"

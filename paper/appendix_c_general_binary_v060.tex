@@ -1,0 +1,536 @@
+\section{An algorithmic example on two non-caterpillar binary trees}
+\label{app:algorithmic-reverse-calculation}
+
+This appendix evaluates the proof on two concrete non-caterpillar unrooted
+binary phylogenetic trees with $N=25$ labelled leaves.  The same value of
+$f_1$ is obtained in three algebraically different ways:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item sum the four nonnegative families in \eqref{eq:A30} over all principal charts;
+\item evaluate the four defining levels $U-\frac12R-\frac12C+\frac14B$ directly;
+\item enumerate the ordered-quadruple kernel on $X^4$.
+\end{enumerate}
+Before presenting the global totals, we display one principal chart, one completed
+square, and its reversed bridge in full detail.
+
+\subsection{The two concrete non-caterpillar trees}
+
+Let $X=\{0,1,\ldots,24\}$.  Take the two trees represented by the following
+Newick strings; line breaks inside each string are only for display.
+\begin{verbatim}
+T1 =
+(((((((0,((19,20),23)),(14,24)),22),5),6),(9,10)),
+(((((1,7),11),((2,((13,(16,18)),17)),12)),(8,15)),3),
+(4,21));
+
+T2 =
+((((0,15),((2,7),24)),(10,20)),
+(((((1,(((3,14),9),8)),19),11),5),18),
+(((((4,(12,(13,21))),17),16),(22,23)),6));
+\end{verbatim}
+Each tree has $25$ leaves of degree one, $23$ internal vertices of degree
+three, and $47$ edges.  To verify directly that neither graph is a
+caterpillar, delete the leaves and consider the induced internal skeleton.
+The numbers of skeleton vertices of degrees $1,2,3$ are
+\[
+\begin{array}{c|ccc}
+\toprule
+&\deg 1&\deg 2&\deg 3\\
+\midrule
+T_1&7&11&5\\
+T_2&6&13&4\\
+\bottomrule
+\end{array}
+\]
+A binary caterpillar has a path as its internal skeleton and therefore has no
+degree-three skeleton vertex.  The last column proves that both $T_1$ and
+$T_2$ are non-caterpillar binary trees.
+
+Each tree has
+\[
+ |E_2(T_1)|=|E_2(T_2)|=25-3=22
+\]
+quartet-relevant internal edges.  We use the following reproducible indexing.
+For an internal edge $g$, let $S(g)$ be the smaller side of its split; it is
+unique because $|X|=25$ is odd.  Order the internal edges first by $|S(g)|$
+and then lexicographically by the increasing tuple of elements of $S(g)$.
+Write the resulting orders as
+\[
+ E_2(T_1)=\{e_0,\ldots,e_{21}\},
+ \qquad
+ E_2(T_2)=\{f_0,\ldots,f_{21}\}.
+\]
+Thus the principal charts are
+\[
+ \chi_{pq}=(e_p,f_q),
+ \qquad 0\le p,q\le21,
+\]
+and there are $22^2=484$ of them.  As in equation~\eqref{eq:A30}, put
+\[
+ A_\chi:=
+ \frac14\mathcal S_{1,\chi}
+ +\frac12\mathcal S_{2,\chi}
+ +\frac12\mathcal S_{3,\chi}
+ +\mathcal S_{4,\chi}.
+\]
+Then
+\[
+ f_1^{\mathrm{A.30}}(T_1,T_2)
+ =\sum_{p=0}^{21}\sum_{q=0}^{21}A_{\chi_{pq}}.
+\]
+
+\subsection{One principal chart in full detail}
+
+Consider
+\[
+ \chi_{7,6}=(e_7,f_6),
+\]
+where the smaller sides of the two principal splits are
+\[
+ S(e_7)=\{1,7,11\},
+ \qquad
+ S(f_6)=\{2,7,24\}.
+\]
+Choose the endpoint $v_-$ on the smaller side of each principal edge;
+equivalently, the displayed orientation points away from the smaller side.
+Endpoint atoms are ordered
+by the edge order above, followed by the residual atoms.  The four row atoms
+are
+\[
+\begin{array}{ccl}
+\toprule
+\text{index}&\text{sector}&\text{taxon block}\\
+\midrule
+0&a&R_0=\{1,7\}\\
+1&b&R_1=\{2,12,13,16,17,18\}\\
+2&b&R_2=X\setminus\{1,2,7,11,12,13,16,17,18\}\\
+3&c&R_3=\{11\}\\
+\bottomrule
+\end{array}
+\]
+and the four column atoms are
+\[
+\begin{array}{ccl}
+\toprule
+\text{index}&\text{sector}&\text{taxon block}\\
+\midrule
+0&b&C_0=\{0,15\}\\
+1&a&C_1=\{2,7\}\\
+2&b&C_2=X\setminus\{0,2,7,15,24\}\\
+3&c&C_3=\{24\}\\
+\bottomrule
+\end{array}
+\]
+Consequently,
+\[
+ r=\left(\frac2{25},\frac6{25},\frac{16}{25},\frac1{25}\right),
+ \qquad
+ c=\left(\frac2{25},\frac2{25},\frac45,\frac1{25}\right),
+\]
+\[
+ (a_{i,k})=
+ \begin{pmatrix}
+ 0&\frac1{25}&\frac1{25}&0\\
+ 0&\frac1{25}&\frac15&0\\
+ \frac2{25}&0&\frac{13}{25}&\frac1{25}\\
+ 0&0&\frac1{25}&0
+ \end{pmatrix},
+\]
+and
+\[
+ (x_{i,k})=
+ \begin{pmatrix}
+ -\frac4{625}&\frac{21}{625}&-\frac3{125}&-\frac2{625}\\
+ -\frac{12}{625}&\frac{13}{625}&\frac1{125}&-\frac6{625}\\
+ \frac{18}{625}&-\frac{32}{625}&\frac1{125}&\frac9{625}\\
+ -\frac2{625}&-\frac2{625}&\frac1{125}&-\frac1{625}
+ \end{pmatrix}.
+\]
+The row-index classes used below are
+\[
+\begin{aligned}
+D_{\chi_{7,6}}
+&=\{(0,1),(0,2),(1,0),(1,3),(2,0),(2,3)\},\\
+I_{\chi_{7,6}}
+&=\{(0,3),(1,2),(2,1),(3,0),(3,1),(3,2),(3,3)\}.
+\end{aligned}
+\]
+
+\subsection{One completed square}
+
+Take the term of $\mathcal S_{1,\chi_{7,6}}$ indexed by
+\[
+ (i,j,k)=(1,0,1).
+\]
+In the definition of $\mathcal S_{1,\chi_{7,6}}$, the two arguments of this
+completed square are
+\[
+ X:=x_{\bar i,\bar k}+x_{i,\bar k}=-\frac{23}{625},
+ \qquad
+ Y:=x_{\bar i,k}+x_{i,k}=\frac{32}{625}.
+\]
+For this term,
+\[
+ c_k=\frac2{25},\qquad
+ c_{\bar k}=\frac{22}{25},\qquad
+ c_{k^+}=\frac3{25},
+\]
+and
+\[
+ a_{i,\bar k}=\frac15,\qquad
+ a_{j,\bar k}=\frac1{25},\qquad
+ a_{i,k}=a_{j,k}=\frac1{25}.
+\]
+The four completed-square terms in $\mathcal P_{1,0,1}(X,Y)$ are all
+nonzero and equal, in order, to
+\[
+ \frac{49}{1739375000},\qquad
+ \frac{11}{2343750},\qquad
+ \frac{81}{976562500},\qquad
+ \frac{81}{195312500}.
+\]
+Therefore
+\[
+\begin{aligned}
+ \mathcal P_{1,0,1}\left(-\frac{23}{625},\frac{32}{625}\right)
+ &={}
+ \frac{49}{1739375000}
+ +\frac{11}{2343750}
+ +\frac{81}{976562500}
+ +\frac{81}{195312500}\\
+ &=\frac{85107103}{16306640625000}.
+\end{aligned}
+\]
+
+\subsection{The four families in this chart}
+
+Evaluating every permitted target in the same chart gives
+\[
+\begin{array}{lcc}
+\toprule
+\text{family}&\text{nonzero summands}&\text{exact sum}\\
+\midrule
+\mathcal S_{1,\chi_{7,6}}&16&1947947093/97839843750000\\
+\mathcal S_{2,\chi_{7,6}}&16&366630403/48919921875000\\
+\mathcal S_{3,\chi_{7,6}}&20&1912609/354492187500\\
+\mathcal S_{4,\chi_{7,6}}&18&913296/29541015625\\
+\bottomrule
+\end{array}
+\]
+For one explicit $\Psi$-target term in $\mathcal S_{3,\chi_{7,6}}$, take
+$(i,j,u)=(0,1,0)$.  Then
+\[
+ X:=x_{\bar i,\bar u}+x_{i,\bar u}=\frac3{625},
+ \qquad
+ \Psi^{\chi_{7,6}}_{0,1}(0)=\frac2{375},
+\]
+so that
+\[
+ \frac14\Psi^{\chi_{7,6}}_{0,1}(0)X^2
+ =\frac14\cdot\frac2{375}\left(\frac3{625}\right)^2
+ =\frac3{97656250}.
+\]
+Substitution into equation~\eqref{eq:A30} yields
+\[
+\begin{aligned}
+A_{\chi_{7,6}}
+={}&\frac14\frac{1947947093}{97839843750000}
++\frac12\frac{366630403}{48919921875000}\\
+&+\frac12\frac{1912609}{354492187500}
++\frac{913296}{29541015625}\\
+={}&\boxed{\frac{1841063809}{43484375000000}}.
+\end{aligned}
+\]
+
+\subsection{The second square under bridge reversal}
+
+The endpoint column atom $C_1=\{2,7\}$ corresponds to the edge $f_1$
+adjacent to the principal edge $f_6$.  Hence the ordered endpoint chart is
+\[
+ \alpha=(f_6,f_1).
+\]
+Its three blocks are
+\[
+\begin{aligned}
+K={}&\{2,7\},\\
+H={}&\{24\},\\
+L={}&\{0,1,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23\}.
+\end{aligned}
+\]
+Bridge reversal gives
+\[
+ \rho\alpha=(f_1,f_6),
+ \qquad
+ (K,H,L)\longmapsto(L,H,K).
+\]
+The reversed endpoint chart belongs to the principal chart
+\[
+ \chi_{7,1}=(e_7,f_1),
+\]
+and not to $\chi_{7,6}$.  The global sum in \eqref{eq:A30} therefore contains both
+orientations:
+\[
+\begin{array}{lll}
+\chi_{7,6},&\alpha=(f_6,f_1),&(K,H,L),\\
+\chi_{7,1},&\rho\alpha=(f_1,f_6),&(L,H,K).
+\end{array}
+\]
+In the reversed chart, the endpoint block $L$ has atom index $0$.  For the
+displayed completed-square form, the four square coefficients pair as follows:
+\[
+\begin{array}{c|c|c}
+\toprule
+\text{second-square term in }\mathcal P^{\chi_{7,6}}_{1,0,1}
+&\text{coefficient}
+&\text{first-square term in }\mathcal P^{\chi_{7,1}}_{1,0,0}\\
+\midrule
+(A.22),\ Y^2&1/5750&(A.23),\ X^2\\
+(A.23),\ Y^2&33/5000&(A.22),\ X^2\\
+(A.24),\ Y^2&1/2500&(A.25),\ X^2\\
+(A.25),\ Y^2&1/500&(A.24),\ X^2\\
+\bottomrule
+\end{array}
+\]
+Thus the sum of the four second-square coefficients in the left column and
+the sum of their four first-square partners in the right column are both
+$211/23000$.  This equality relates two different principal charts and is
+precisely the
+$(A.22)\leftrightarrow(A.23)$ and $(A.24)\leftrightarrow(A.25)$ coefficient
+matching used by the symbolic proof.  Reversal does not identify the
+subtotals of the two principal charts.
+
+\subsection{First computation: the global four-family sum}
+
+To display all $484$ principal-chart contributions compactly, group the row
+edge indices into four disjoint ranges.  Put
+\[
+ D_*:=88349873334030000000000
+\]
+and
+\[
+\begin{aligned}
+G_1&=509632929097785686741,&
+G_2&=338603181900355216089,\\
+G_3&=551304736571593597776,&
+G_4&=697786193522003585794.
+\end{aligned}
+\]
+The exact grouped sums are
+\[
+\begin{array}{ccc}
+\toprule
+\text{principal row-edge range}&\text{number of charts}&\text{contribution}\\
+\midrule
+0\le p\le4&110&G_1/D_*\\
+5\le p\le10&132&G_2/D_*\\
+11\le p\le15&110&G_3/D_*\\
+16\le p\le21&132&G_4/D_*\\
+\bottomrule
+\end{array}
+\]
+These ranges contain all $484$ charts.  Consequently,
+\[
+\begin{aligned}
+\sum_\chi A_\chi
+&=\frac{G_1+G_2+G_3+G_4}{D_*}\\
+&=\frac{2097327041091738086400}{88349873334030000000000}\\
+&=\boxed{\frac{9273}{390625}}.
+\end{aligned}
+\]
+Thus
+\[
+ \boxed{f_1^{\mathrm{A.30}}(T_1,T_2)=\frac{9273}{390625}}.
+\]
+
+\subsection[Second computation: the defining formula]
+{Second computation: the defining formula for $f_1$}
+
+For each pair $(e,f)$, retain the notation
+\[
+ U_{e,f}=T[\sigma_e,\tau_f],\quad
+ R_{e,f}=T[\sigma_e^+,\tau_f],\quad
+ C_{e,f}=T[\sigma_e,\tau_f^+],\quad
+ B_{e,f}=T[\sigma_e^+,\tau_f^+].
+\]
+Direct exact enumeration of the four defining levels gives
+\[
+\begin{aligned}
+\sum_{e\in E_2(T_1)}\sum_{f\in E_2(T_2)}U_{e,f}
+&=\frac{32602}{78125}
+                    =\frac{163010}{390625},&
+\sum_{e\in E_2(T_1)}\sum_{f\in E_2(T_2)}R_{e,f}
+&=\frac{48424}{78125}
+                    =\frac{242120}{390625},\\
+\sum_{e\in E_2(T_1)}\sum_{f\in E_2(T_2)}C_{e,f}
+&=\frac{251002}{390625},&
+\sum_{e\in E_2(T_1)}\sum_{f\in E_2(T_2)}B_{e,f}
+&=\frac{371296}{390625}.
+\end{aligned}
+\]
+Therefore
+\[
+\begin{aligned}
+f_1^{\mathrm{direct}}
+&=\sum_{e\in E_2(T_1)}\sum_{f\in E_2(T_2)}\left(
+U_{e,f}-\frac12R_{e,f}-\frac12C_{e,f}+\frac14B_{e,f}
+\right)\\
+&=\frac{163010-121060-125501+92824}{390625}\\
+&=\boxed{\frac{9273}{390625}}.
+\end{aligned}
+\]
+Hence the two algebraically distinct accumulations agree exactly:
+\[
+\boxed{
+f_1^{\mathrm{direct}}(T_1,T_2)
+=f_1^{\mathrm{A.30}}(T_1,T_2)
+=\frac{9273}{390625}}.
+\]
+
+This agreement holds only after the global sum is taken.  For the displayed
+chart, write
+$U_{76}:=U_{e_7,f_6}$ and analogously for $R_{76},C_{76},B_{76}$.  Direct
+enumeration gives
+\[
+ U_{76}=\frac{256}{390625},\qquad
+ R_{76}=\frac{502}{390625},\qquad
+ C_{76}=\frac{524}{390625},\qquad
+ B_{76}=\frac{989}{390625}.
+\]
+Thus its fixed-chart inclusion--exclusion subtotal is
+\[
+ U_{76}-\frac12R_{76}-\frac12C_{76}+\frac14B_{76}
+ =-\frac{39}{1562500},
+\]
+whereas
+\[
+ A_{\chi_{7,6}}=\frac{1841063809}{43484375000000}>0.
+\]
+Bridge reversal reallocates individual second-square coefficients across
+reversed principal charts.  Equation \eqref{eq:A30} preserves the global sum,
+not each individual chart subtotal.
+
+\subsection{Third computation: the ordered-quadruple kernel}
+
+This calculation does not use the chart decomposition.  We use the signed
+indexed sum $\mathfrak O_T$, antisymmetric side-pair function $\phi_o$, and
+kernel $K_T$ from Section~\ref{sec:counting}.  For
+the two trees in this appendix,
+\[
+ |\overrightarrow A_2(T_1)|=52,
+ \qquad
+ |\overrightarrow A_2(T_2)|=50,
+\]
+so $|\mathfrak O_{T_1}|=74$ and $|\mathfrak O_{T_2}|=72$, counting
+indexed occurrences.
+
+For $\boldsymbol q=(x,y,z,w)\in X^4$, put
+\[
+ c(x,y,z,w)
+ :=\frac14K_{T_1}(x,y;z,w)K_{T_2}(x,y;z,w).
+\]
+The symbolic kernel identity \eqref{eq:ordered-quadruple-kernel} gives
+\[
+ N^4f_1(T_1,T_2)=\sum_{(x,y,z,w)\in X^4}c(x,y,z,w).
+\]
+Moreover, Lemma~\ref{lem:kernel-to-path-bridge} proves
+$|c(x,y,z,w)|\le1/4$ for every tuple, including every repeated-label
+pattern.
+We evaluate this expression separately for all
+\[
+ 25^4=390625
+\]
+ordered quadruples and classify each tuple by the number
+$d=|\{x,y,z,w\}|$ of distinct labels.  The exact totals are
+\[
+\begin{array}{c|r|r}
+\toprule
+d&\text{number of ordered quadruples}&\sum c(x,y,z,w)\\
+\midrule
+1&25&0\\
+2&4200&287\\
+3&82800&9098\\
+4&303600&-112\\
+\midrule
+\text{all}&390625&9273\\
+\bottomrule
+\end{array}
+\]
+For additional control of the repeated-label part, encode the equality pattern
+of $(x,y,z,w)$ by assigning $0,1,2,3$ in order of first appearance.  The only
+nonzero pattern totals are
+\[
+\begin{array}{c|c}
+\toprule
+\text{canonical equality pattern}&\text{exact contribution}\\
+\midrule
+0101, 0110&287/2\text{ each}\\
+0102, 0112, 0120, 0121&4549/2\text{ each}\\
+0123&-112\\
+\bottomrule
+\end{array}
+\]
+All other equality patterns contribute zero.  Hence the repeated-label
+contribution is computed directly as
+\[
+ R_{\mathrm{rep}}=0+287+9098=9385,
+\]
+rather than being inferred by subtracting the distinct-label total from the
+answer.
+
+For the $d=4$ part, direct quartet enumeration gives
+\[
+ \Same(T_1,T_2)=4198,
+ \qquad
+ \Diff(T_1,T_2)=8452.
+\]
+These values sum to $\binom{25}{4}=12650$.  The symbolic $24$-ordering count
+in the proof of Proposition~\ref{prop:counting-identity} gives subtotal $4$
+for every common displayed quartet and $-2$ for every different displayed
+quartet.  The program also checks these $24$-ordering subtotals separately
+for every four-subset in this example.  Consequently,
+\[
+ 4\Same-2\Diff
+ =4\cdot4198-2\cdot8452
+ =-112,
+\]
+which is exactly the $d=4$ row of the table.  Combining the distinct and
+repeated parts gives
+\[
+ \sum_{(x,y,z,w)\in X^4}c(x,y,z,w)
+ =-112+9385
+ =9273.
+\]
+After normalization by $N^4=25^4=390625$,
+\[
+ f_1^{X^4\text{-enum}}(T_1,T_2)
+ =\frac1{25^4}\sum_{(x,y,z,w)\in X^4}c(x,y,z,w)
+ =\frac{9273}{390625}.
+\]
+Therefore all three calculations agree exactly:
+\[
+\boxed{
+ f_1^{\mathrm{A.30}}(T_1,T_2)
+ =f_1^{\mathrm{direct}}(T_1,T_2)
+ =f_1^{X^4\text{-enum}}(T_1,T_2)
+ =\frac{9273}{390625}}.
+\]
+Among the $390625$ ordered quadruples, $172324$ have nonzero contribution.
+The largest observed absolute contribution of a single ordered quadruple is
+$1/4$, attaining the universal bound from
+Lemma~\ref{lem:kernel-to-path-bridge}.
+
+All values in this appendix were recomputed in exact rational arithmetic by
+the accompanying program \texttt{verify\_v048\_appendix\_c\_n25\_general.py}.
+The program evaluates the global A.30 chart sum, compares every paired square
+coefficient under bridge reversal, enumerates $X^4$, and verifies the stated
+distinct-count and equality-pattern totals.  The A.30, defining-formula, and
+$X^4$ calculations use algebraically different formulas on the same
+deterministically generated tree data.  The program also compares the
+canonical Newick serializations with the displayed strings, but the three
+calculations do not use independently parsed tree implementations.
+
+Accordingly, these finite calculations provide a three-formula consistency
+check on shared parsed tree data.  They do not replace the row decomposition
+with one column term fixed, the bridge-reversal argument, or the general
+same-side block coefficient identity in
+Appendix~\ref{app:local-expansion}; nor do they replace the full-domain
+kernel-to-path proof in Section~\ref{sec:counting}.
