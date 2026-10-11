@@ -1,0 +1,69 @@
+PTRF v8 aligned delivery manifest
+Date: 2026-09-05
+Current revision: single zero-mass-cell measurability copyedit
+
+Manuscript:
+A Sum-of-Squares Decomposition for Quartet Covariance: Bivariate Independence
+and Quartet Distance
+
+Authors: Stefan Grünewald and Libo Huang
+
+Only manuscript change: TeX lines 1773--1774 now set g_k(x)=0 on the union
+of zero-F_X-mass cells; the analogous h_k convention is unchanged in wording.
+All other text is untouched. This includes the earlier suggested edits to
+the Introduction, "Both sides", weighted covariance, and Discussion: none
+of those edits was made. No Lean comment was changed.
+
+The recompiled PDF remains 27 pages. All 115 displayed-math blocks, all 14
+numbered statement environments, all 1945 TeX lines, all label locations,
+the bibliography, .bbl, .cls and .bst are preserved except for the exact
+authorized two-line text replacement. Rendered pages 23--24 have local
+reflow; the other 25 rendered pages are byte-for-byte identical at 96 dpi.
+
+Current files and SHA-256 hashes:
+
+Grunewald_Huang_PTRF_v8.tex
+b691af256df8edb11503ddcc47c01bc88977d97af3b4447b814105517cf9b1ce
+
+Grunewald_Huang_PTRF_v8_References.bib
+9082a66ab956dc4abed7c2a478127cb1ea274d9dc0a7eebca674f0e091e18df8
+
+Grunewald_Huang_PTRF_v8.bbl
+e507341cc6d317cae9d570b96256fb5e9ad3c1c8aca239a4b9d831047727e20e
+
+sn-jnl.cls
+36d0c3273a59d48dc6a9c7b080dfa1ec50dc10229d8751568d1f2e490ffa5ecc
+
+sn-mathphys-num.bst
+b3a7c7fbcc1e7f9619de634fcea2f5bb7a245818a5942bc576e40ea001633332
+
+Grunewald_Huang_PTRF_v8.pdf
+3853df09723be17bfdd2e4709c44ff40e10f84f0c8d5f430013bbbdf28f5c069
+
+ESM_1.zip
+bcd32e8a8604c724a9760886ddb41efe532eca2bb1ccc69ca052b5ff0be3558d
+
+Grunewald_Huang_PTRF_v8_Source.zip
+59373542f8d062551ed490d780a49c70fdd1728dba2ce8512fb726916b400f93
+
+Lean supplement:
+- ESM_1.zip is the complete integrated package, including WeightedDrawBridge.
+- All 142 Lean files (53,709 lines) are byte-for-byte identical to the prior
+  completed weighted-draw package; dependencies and MIT licence are unchanged.
+- That exact source set passed the earlier 2026-09-05 fresh full build
+  (8798 jobs), 27 terminal axiom checks, and the all-local-declarations audit
+  (6226 declarations, 4507 theorems, no unexpected axioms).
+- This manuscript-only revision checks source identity and refreshes records;
+  it does not claim a second fresh Lean build.
+- Current ZIP: 157 files, 156 checksum entries, all verified after packing.
+- Source-only: no .lake directory, compiled caches, or symbolic links.
+
+Lean sorted checksum-list SHA-256:
+d09cafbec880c2a446260e1c76789c3b43e0be71023be6017330d5dc46dfd05e
+
+The current MANUSCRIPT_LOCK.md inside ESM_1.zip records the current TeX,
+PDF and bibliography hashes above. The source ZIP contains the current TeX
+and its four unchanged bibliography/template inputs.
+
+Original files are preserved in the PRE_M1_COPYEDIT_BACKUP_20260905
+subdirectory before local replacement. No journal submission was modified.
