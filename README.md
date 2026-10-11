@@ -8,6 +8,22 @@ This is a private research repository for the manuscript
 
 and its Lean 4/mathlib formalization companion.
 
+## PTRF v8 materials have moved
+
+The PTRF v8 manuscript *A Sum-of-Squares Decomposition for Quartet Covariance:
+Bivariate Independence and Quartet Distance*, by Stefan Grünewald and Libo
+Huang, and its matched Lean supplement are now maintained in the dedicated
+[Bandelt-Dress-2 repository](https://github.com/huanglibo389/Bandelt-Dress-2).
+
+On 11 October 2026, the duplicate `ptrf-v8/` directory was removed from this
+repository's current `main` branch after its six archival files were verified
+to be byte-for-byte identical to the copies in the new repository. The v0.60
+manuscript in `paper/` and the Lean project in `formalization/` are retained
+unchanged. Existing commits and version tags have not been rewritten.
+
+For provenance, the original PTRF v8 snapshot remains available at
+[commit `0b55dc8`](https://github.com/huanglibo389/bandelt-dress-quartet-lean/tree/0b55dc8ee560b4af57bdd43b1f5f09496eacfe57/ptrf-v8).
+
 ## Repository layout
 
 - `paper/` contains the authoritative v0.60 TeX source, compiled PDF,
